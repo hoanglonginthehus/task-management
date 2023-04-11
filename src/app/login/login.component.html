@@ -1,0 +1,32 @@
+<div class="login-page">
+    <div class="container-fluid">
+        <div class="wrapper">
+            <div class="left-background">
+                <img src="../../assets/login-background.png" alt="no">
+            </div>
+            <form [formGroup]="form" class="form" (submit)="login()">
+                <div class="form-title"><span style="font-size: 40px">Task</span><br>Management</div>
+                <div class="form-group">
+                    <div class="input-line">
+                        <fa-icon icon="envelope"></fa-icon>
+                        <input type="text" id="username" class="input-text" formControlName="username"
+                            placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-line">
+                        <fa-icon icon="lock"></fa-icon>
+                        <input type="password" id="password" class="input-text" formControlName="password"
+                            placeholder="Password">
+                        <div class="icon-password">
+                            <i class="fa fa-solid fa-eye-slash"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button>Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

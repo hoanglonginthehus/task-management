@@ -1,0 +1,58 @@
+<app-nav></app-nav>
+<div class="wrapper">
+
+    <div class="main">
+        <h4>Danh sách nhân viên</h4>
+        <div>
+            <div class="pull-right">
+                <button>+ Thêm mới</button>
+                <button>
+                    <fa-icon icon=download></fa-icon>
+                    Xuất file
+                </button>
+            </div>
+        </div>
+        <div id="main-content" class="container-fluid">
+            <div class="row head row-content">
+                <div class="col-1">STT</div>
+                <div class="col-2">Tên tài khoản</div>
+                <div class="col-2">Họ và tên</div>
+                <div class="col-1">SĐT</div>
+                <div class="col-1">Phòng ban</div>
+                <div class="col-2">Chức vụ</div>
+                <div class="col-2">Trạng thái</div>
+                <div class="col-1">Hành động</div>
+            </div>
+            <div *ngFor="let item of empList; let idx = index" class="row body row-content">
+                <div class="col-1">{{idx+1}}</div>
+                <div class="col-2">{{item.username}}</div>
+                <div class="col-2">{{item.name}}</div>
+                <div class="col-1">{{item.phoneNo}}</div>
+                <div class="col-1">{{item.department}}</div>
+                <div class="col-2">{{item.role[0].role_name}}</div>
+                <div class="col-2">
+                    <div *ngIf="item.status === 'Active'; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <span class="active">Hoạt động</span>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <span class="not-active">Ngừng hoạt động</span>
+                    </ng-template>
+                </div>
+                <div class="col-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 update">
+                                <fa-icon icon=pen-square></fa-icon>
+                            </div>
+                            <div class="col-6 delete">
+                                <fa-icon icon=trash></fa-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

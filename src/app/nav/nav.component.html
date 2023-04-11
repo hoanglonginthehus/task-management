@@ -1,0 +1,37 @@
+<div class="navbar">
+    <div class="side">
+        <a href="/dashboard" class="navbar-logo"></a>
+        <div class="navbar-button" routerLink="/employee">
+            <img src="../../assets/user.svg" alt="user">
+            <span>Nhân viên</span>
+        </div>
+        <div class="navbar-button" routerLink="/customer">
+            <img src="../../assets/user.svg" alt="customer">
+            <span>Khách hàng</span>
+        </div>
+        <div class="navbar-button">
+            <img src="../../assets/task.svg" alt="task">
+            <span>Công việc</span>
+        </div>
+    </div>
+    <div class="side">
+        <div class="navbar-button">
+            <img src="../../assets/notification.svg" alt="notification">
+            <span>Thông báo</span>
+        </div>
+        <div class="navbar-button">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn" ngbDropdownToggle>
+                    <img src="../../assets/username.svg" alt="username">
+                    <span>{{account}}</span>
+                </button>
+                <div ngbDropdownMenu>
+                    <button ngbDropdownItem (click)="logOut()">
+                        <fa-icon icon="arrow-right"></fa-icon>
+                        Đăng xuất
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

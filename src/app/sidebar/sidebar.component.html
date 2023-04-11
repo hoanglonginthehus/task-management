@@ -1,0 +1,12 @@
+<div class="side-bar">
+    <ul class="container-fluid">
+        <li *ngFor="let item of list" class="row">
+            <a routerLink="">
+                <span class="col-2">
+                    <img src={{item.icon}} alt="no-icon">
+                </span>
+                <span class="title col-9">{{item.name}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

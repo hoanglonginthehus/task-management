@@ -1,0 +1,19 @@
+.side-bar {
+    width: 170px;
+
+    li {
+        height: 70px;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+
+            span {
+                color: rgba(98, 77, 227, 1);
+            }
+        }
+    }
+
+}
