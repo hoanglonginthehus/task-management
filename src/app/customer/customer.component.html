@@ -1,2 +1,60 @@
 <app-nav></app-nav>
-<p>customer works!</p>
+<div class="wrapper">
+
+    <div class="main">
+        <h4>Danh sách khách hàng</h4>
+        <div>
+            <div class="pull-right">
+                <button (click)="openAddModal(add)">+ Thêm mới</button>
+                <button>
+                    <fa-icon icon=download></fa-icon>
+                    Xuất file
+                </button>
+            </div>
+        </div>
+        <div id="main-content" class="container-fluid">
+            <div class="row head row-content">
+                <div class="col-1">STT</div>
+                <div class="col-2">Tên hệ thống</div>
+                <div class="col-2">Họ và tên</div>
+                <div class="col-1">SĐT</div>
+                <div class="col-3">Thuộc đối tác</div>
+                <div class="col-2">Trạng thái</div>
+                <div class="col-1">Hành động</div>
+            </div>
+            <div *ngFor="let item of customerList; let idx = index" class="row body row-content">
+                <div class="col-1">{{idx+1}}</div>
+                <div class="col-2">{{item.systemName}}</div>
+                <div class="col-2">{{item.name}}</div>
+                <div class="col-1">{{item.phoneNo}}</div>
+                <div class="col-3">{{item.partner}}</div>
+                <div class="col-2">
+                    <div *ngIf="item.status === 'Active'; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <span class="active">Hoạt động</span>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <span class="not-active">Ngừng hoạt động</span>
+                    </ng-template>
+                </div>
+                <div class="col-1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 update">
+                                <fa-icon icon=pen-square></fa-icon>
+                            </div>
+                            <div class="col-6 delete">
+                                <fa-icon icon=trash></fa-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #add let-modal>
+    
+</ng-template>
