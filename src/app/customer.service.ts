@@ -14,4 +14,8 @@ export class CustomerService {
   getCustomerList(): Observable<any> {
     return this.http.get(this.customerAPI + 'list/')
   }
+
+  addCustomer(name: string, systemName: string, email: string, phoneNo: string, partner: string, gender: string, note: string, status: string ): Observable<any> {
+    return this.http.post(this.customerAPI + 'form', {name, systemName, email, phoneNo, partner, gender, note, status})
+  }
 }

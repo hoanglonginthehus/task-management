@@ -14,18 +14,16 @@ export class CustomerComponent {
   customerList: any[] = [];
 
   addForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required]],
-    code: ['', [Validators.pattern('^[a-zA-Z0-9\s]*$')]],
-    taxCode: ['', [Validators.required, Validators.pattern('^[0-9]{10}-[0-9]{3}$')]],
-    shortName: [''],
-    address: ['', [Validators.required]],
+    name: ['', Validators.required],
+    systemName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    representative: ['', [Validators.required]],
-    position: ['', [Validators.required]],
-    size: ['', [Validators.required]],
-    phone: ['', [Validators.required, Validators.pattern('^0[0-9]{9}$')]],
+    phoneNo: ['', [Validators.required, Validators.pattern('^0[0-9]{9}$')]],
+    partner: ['', [Validators.required]],
+    gender: ['Male', [Validators.required]],
+    note: [''],
     status: ['', [Validators.required]],
   });
+
 
   constructor(private customerService: CustomerService,
     private modalService: NgbModal,
@@ -41,9 +39,16 @@ export class CustomerComponent {
     })
   }
 
-  openAddModal(content: TemplateRef<any>): void {
-    this.modalService.open(content, { centered: true }).result.then((result) => {
-
+  openAddModal(addModal: TemplateRef<any>): void {
+    this.modalService.open(addModal, { centered: true, size: 'lg' }).result.then((result) => {
+      if (result === 'save') {
+        const val = this.addForm.value;
+        this.customerService.addCustomer(val.name, val.systemName, val.email, val.phoneNo, val.partner, val. gender, val.note, val.status).subscribe(response => {
+          alert('Them khach hang thanh cong');
+          this.ngOnInit();
+        })
+        
+      }
     })
   }
 }

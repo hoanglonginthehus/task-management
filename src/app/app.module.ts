@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorProvider } from './auth.interceptor';
 import { NavComponent } from './nav/nav.component';
@@ -31,6 +31,7 @@ import { CustomerComponent } from './customer/customer.component';
     NgbModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [AuthInterceptorProvider],
