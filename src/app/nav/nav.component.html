@@ -2,27 +2,49 @@
     <div class="side">
         <a href="/dashboard" class="navbar-logo"></a>
         <div class="navbar-button" routerLink="/employee">
-            <img src="../../assets/user.svg" alt="user">
+            <img src="../../assets/icon/nav-bar/user.svg" alt="user">
             <span>Nhân viên</span>
         </div>
         <div class="navbar-button" routerLink="/customer">
-            <img src="../../assets/user.svg" alt="customer">
+            <img src="../../assets/icon/nav-bar/user.svg" alt="customer">
             <span>Khách hàng</span>
         </div>
         <div class="navbar-button">
-            <img src="../../assets/task.svg" alt="task">
-            <span>Công việc</span>
+            <div ngbDropdown class="d-inline-block">
+                <a type="button" class="dropdown-toggle" ngbDropdownToggle>
+                    <img src="../../assets/icon/nav-bar/task.svg" alt="task">
+                    <span>Công việc</span>
+                </a>
+                <div ngbDropdownMenu>
+                    <a ngbDropdownItem class="dropdown-item" routerLink="/project">
+                        <img src="../../assets/icon/nav-bar/project.png" alt="project">
+                        Danh sách dự án
+                    </a>
+                    <a ngbDropdownItem class="dropdown-item" routerLink="/module">
+                        <img src="../../assets/icon/nav-bar/module.png" alt="project">
+                        Danh sách module
+                    </a>
+                    <a ngbDropdownItem class="dropdown-item" routerLink="/work-item">
+                        <img src="../../assets/icon/nav-bar/item.png" alt="project">
+                        Danh sách đầu mục
+                    </a>
+                    <a ngbDropdownItem class="dropdown-item" routerLink="/work-plan">
+                        <img src="../../assets/icon/nav-bar/work.png" alt="project">
+                        Danh sách công việc
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="side">
         <div class="navbar-button">
-            <img src="../../assets/notification.svg" alt="notification">
+            <img src="../../assets/icon/nav-bar/notification.svg" alt="notification">
             <span>Thông báo</span>
         </div>
         <div class="navbar-button">
             <div ngbDropdown class="d-inline-block">
                 <button type="button" class="btn" ngbDropdownToggle>
-                    <img src="../../assets/username.svg" alt="username">
+                    <img src="../../assets/icon/nav-bar/username.svg" alt="username">
                     <span>{{account}}</span>
                 </button>
                 <div ngbDropdownMenu>

@@ -12,10 +12,10 @@
         align-items: center;
     }
 
-    a {
+    a.navbar-logo {
         width: 170px;
         height: 60px;
-        background-image: url('../../assets/nav-logo.svg');
+        background-image: url('../../assets/icon/nav-bar/nav-logo.svg');
         background-size: contain;
         background-repeat: no-repeat;
         background-color: #fff;
@@ -36,6 +36,17 @@
 
         &:hover {
             cursor: pointer;
+        }
+
+        .dropdown-toggle {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .dropdown-item {
+            img {
+                width: 20px;
+            }
         }
     }
 }

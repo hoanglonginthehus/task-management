@@ -14,6 +14,10 @@ import { NavComponent } from './nav/nav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ProjectComponent } from './project/project.component';
+import { ModuleComponent } from './module/module.component';
+import { WorkItemComponent } from './work-item/work-item.component';
+import { WorkPlanComponent } from './work-plan/work-plan.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { CustomerComponent } from './customer/customer.component';
     NavComponent,
     SidebarComponent,
     EmployeeComponent,
-    CustomerComponent
+    CustomerComponent,
+    ProjectComponent,
+    ModuleComponent,
+    WorkItemComponent,
+    WorkPlanComponent
   ],
   imports: [
     BrowserModule,

@@ -41,10 +41,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-6 update">
-                                <fa-icon icon=pen-square></fa-icon>
+                                <fa-icon icon=pen-square (click)="openUpdateModal(update, item.id)"></fa-icon>
                             </div>
                             <div class="col-6 delete">
-                                <fa-icon icon=trash></fa-icon>
+                                <fa-icon icon=trash (click)="openDeleteModal(remove, item.id)"></fa-icon>
                             </div>
                         </div>
                     </div>
@@ -56,9 +56,9 @@
 </div>
 
 <ng-template #add let-modal>
-    <div id="add-modal">
+    <div id="modal">
         <div class="modal-header">
-            <h4 class="modal-title">thêm mới khách hàng</h4>
+            <h4 class="modal-title">THÊM MỚI KHÁCH HÀNG</h4>
         </div>
         <div class="modal-body">
             <div class="container-fluid">
@@ -138,6 +138,105 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
             <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #update let-modal>
+    <div id="modal">
+        <div class="modal-header">
+            <h4 class="modal-title">SỬA THÔNG TIN KHÁCH HÀNG</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <form [formGroup]="updateForm">
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="update-systemName" class="form-label">Tên hệ thống: <span>*</span></label>
+                            <input type="text" placeholder="Nhập tên hệ thống" class="form-control"
+                                formControlName="systemName">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="update-gender" class="form-label">Giới tính <span>*</span></label>
+                            <select id="update-gender" class="form-control">
+                                <option value="Male" selected>Nam</option>
+                                <option value="Female">Nữ</option>
+                                <option value="Other">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="update-name" class="form-label">Họ và tên: <span>*</span></label>
+                            <input type="text" placeholder="Nhập họ và tên" class="form-control" formControlName="name">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="update-partner" class="form-label">Thuộc đối tác: <span>*</span></label>
+                            <input type="text" placeholder="Nhập tên đối tác" class="form-control"
+                                formControlName="partner">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="update-email" class="form-label">Email <span>*</span></label>
+                            <input type="text" placeholder="Nhập email" class="form-control" formControlName="email">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="update-status" class="form-label">Trạng thái <span>*</span></label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" id="status-active"
+                                            value="Active" formControlName="status">
+                                        <label class="form-check-label" for="status-active">
+                                            Hoạt động
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status"
+                                            id="status-not-active" checked value="Inactive" formControlName="status">
+                                        <label class="form-check-label" for="status-not-active">
+                                            Không hoạt động
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="update-phoneNo" class="form-label">Số điện thoại <span>*</span></label>
+                            <input type="text" placeholder="Nhập số điện thoại" class="form-control"
+                                formControlName="phoneNo">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="update-note" class="form-label">Ghi chú</label>
+                            <input type="text" placeholder="" class="form-control" formControlName="note">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+            <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #remove let-modal>
+    <div id="modal">
+        <div class="modal-header" style="font-size: 24px;">
+            Xác nhận xóa dữ liệu?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+            <button type="button" class="btn btn-save" (click)="modal.close('save')">Đồng ý</button>
         </div>
     </div>
 </ng-template>

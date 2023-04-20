@@ -36,10 +36,12 @@
 
                 .update {
                     color: rgba(98, 77, 227, 1);
+                    cursor: pointer;
                 }
 
                 .delete {
                     color: rgba(163, 13, 17, 1);
+                    cursor: pointer;
                 }
 
                 .active {
@@ -62,6 +64,7 @@
             .row-content:nth-child(even) {
                 background-color: #F7F6FE;
             }
+
         }
 
         button {
@@ -76,14 +79,13 @@
     }
 }
 
-#add-modal {
+#modal {
     .modal-header {
         font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 30px;
         line-height: 36px;
-        text-transform: uppercase;
         justify-content: center;
         align-items: center;
         color: #000000;

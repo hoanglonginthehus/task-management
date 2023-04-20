@@ -5,6 +5,10 @@ import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { LoginComponent } from './login/login.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ProjectComponent } from './project/project.component';
+import { ModuleComponent } from './module/module.component';
+import { WorkItemComponent } from './work-item/work-item.component';
+import { WorkPlanComponent } from './work-plan/work-plan.component';
 
 const routes: Routes = [
   {
@@ -20,6 +24,22 @@ const routes: Routes = [
   },
   {
     path: 'customer', component: CustomerComponent,
+    canActivate:[IsAuthenticatedGuard]
+  },
+  {
+    path: 'project', component: ProjectComponent,
+    canActivate:[IsAuthenticatedGuard]
+  },
+  {
+    path: 'module', component: ModuleComponent,
+    canActivate:[IsAuthenticatedGuard]
+  },
+  {
+    path: 'work-item', component: WorkItemComponent,
+    canActivate:[IsAuthenticatedGuard]
+  },
+  {
+    path: 'work-plan', component: WorkPlanComponent,
     canActivate:[IsAuthenticatedGuard]
   },
   {

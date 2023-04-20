@@ -15,7 +15,20 @@ export class CustomerService {
     return this.http.get(this.customerAPI + 'list/')
   }
 
-  addCustomer(name: string, systemName: string, email: string, phoneNo: string, partner: string, gender: string, note: string, status: string ): Observable<any> {
-    return this.http.post(this.customerAPI + 'form', {name, systemName, email, phoneNo, partner, gender, note, status})
+  addCustomer(name: string, systemName: string, email: string, phoneNo: string, partner: string, gender: string, note: string, status: string): Observable<any> {
+    return this.http.post(this.customerAPI + 'form', { name, systemName, email, phoneNo, partner, gender, note, status })
+  }
+
+  getCustomerById(id: number): Observable<any> {
+    return this.http.get(this.customerAPI + id);
+  }
+
+  updateCustomer(id: number, name: string, systemName: string, email: string, phoneNo: string, partner: string, gender: string, note: string, status: string): Observable<any> {
+    const putUrl = this.customerAPI + 'form/' + id;
+    return this.http.put(putUrl, { name, systemName, email, phoneNo, partner, gender, note, status })
+  }
+
+  deleteCustomer(id: number): Observable<any> {
+    return this.http.delete(this.customerAPI + 'delete/' + id, {responseType: 'text'});
   }
 }
