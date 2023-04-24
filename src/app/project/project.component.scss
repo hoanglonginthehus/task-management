@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.wrapper {
+    padding: 30px 20px;
+
+    .main {
+        box-shadow: 0 0 6px 0 rgba(50, 50, 50, 0.1);
+
+        .pull-right {
+            text-align: right;
+        }
+
+        .search-bar {
+            padding: 20px 0px;
+            display: flex;
+            align-items: flex-end;
+
+            .search-box {
+                padding: 0px 80px 0px 20px;
+                border-right: 2px solid #D0D5DD;
+
+                &.grow {
+                    flex-grow: 1;
+                    border-right: none;
+                }
+
+                .search-title {
+                    font-family: 'Montserrat', sans-serif;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 32px;
+                    color: #191D23;
+                }
+
+                .search-content {
+                    border: 1px solid #624DE3;
+                    border-radius: 40px;
+                    width: 240px;
+                    height: 36px;
+                    padding: 1em;
+                }
+            }
+
+        }
+
+        #main-content {
+
+            .row-content {
+                align-items: center;
+            }
+
+            .head {
+                font-family: 'Montserrat', sans-serif;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 48px;
+            }
+
+            .body {
+                height: 54px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 17px;
+
+                // .update {
+                //     color: rgba(98, 77, 227, 1);
+                //     cursor: pointer;
+                // }
+
+                // .delete {
+                //     color: rgba(163, 13, 17, 1);
+                //     cursor: pointer;
+                // }
+
+                .active {
+                    background: #EBF9F1;
+                    color: #1F9254;
+                    border-radius: 22px;
+                    padding: 8px 12px;
+                    gap: 10px;
+                }
+
+                .not-active {
+                    background: #FBE7E8;
+                    color: #A30D11;
+                    border-radius: 22px;
+                    padding: 8px 12px;
+                    gap: 16px;
+                }
+            }
+
+            .row-content:nth-child(even) {
+                background-color: #F7F6FE;
+            }
+
+        }
+
+        button {
+            width: 140px;
+            height: 45px;
+            margin: 0px 10px;
+            color: #FFFFFF;
+            padding: 8px 12px;
+            background: #624DE3;
+            border-radius: 8px
+        }
+    }
+}

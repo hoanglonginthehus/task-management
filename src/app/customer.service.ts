@@ -28,7 +28,8 @@ export class CustomerService {
     return this.http.put(putUrl, { name, systemName, email, phoneNo, partner, gender, note, status })
   }
 
-  deleteCustomer(id: number): Observable<any> {
-    return this.http.delete(this.customerAPI + 'delete/' + id, {responseType: 'text'});
+  filterCustomer(systemName: string, name: string, partner: string) {
+    const filterUrl = this.customerAPI + '?' + 'name=' + name + '&' + 'systemName=' + systemName + '&' +'partner=' + partner;
+    return this.http.get(filterUrl);
   }
 }

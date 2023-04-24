@@ -14,24 +14,32 @@ export class CustomerComponent {
 
   customerList: any[] = [];
 
+  filterForm = {
+    'systemName': "",
+    'name': "",
+    'partner': "",
+  }
+
+  //Add Form
   addForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
     systemName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     phoneNo: ['', [Validators.required, Validators.pattern('^0[0-9]{9}$')]],
     partner: ['', [Validators.required]],
-    gender: ['Male', [Validators.required]],
+    gender: ['', [Validators.required]],
     note: [''],
     status: ['', [Validators.required]],
   });
 
+  //Update form
   updateForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
     systemName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     phoneNo: ['', [Validators.required, Validators.pattern('^0[0-9]{9}$')]],
     partner: ['', [Validators.required]],
-    gender: ['Male', [Validators.required]],
+    gender: ['', [Validators.required]],
     note: [''],
     status: ['', [Validators.required]],
   });
@@ -50,6 +58,7 @@ export class CustomerComponent {
     })
   }
 
+  //ADD MODAL & ADDING CUSTOMERS
   openAddModal(addModal: TemplateRef<any>): void {
     this.modalService.open(addModal, { centered: true, size: 'lg' }).result.then((result) => {
       if (result === 'save') {
@@ -72,6 +81,7 @@ export class CustomerComponent {
     })
   }
 
+  //UPDATING MODAL & UPDATING CUSTOMERS
   openUpdateModal(updateModal: TemplateRef<any>, id: number) {
     this.customerService.getCustomerById(id).subscribe(data => {
       this.updateForm = this.fb.group({
@@ -103,24 +113,13 @@ export class CustomerComponent {
 
         }
       }
-
-      // if (result === 'dismiss') {
-      //   console.log(this.updateForm.value);
-      // }
     })
   }
 
-  openDeleteModal(deleteModal: TemplateRef<any>, id: number) {
-    this.modalService.open(deleteModal, { centered: true }).result.then((result) => {
-      if (result === 'save') {
-        this.customerService.deleteCustomer(id).subscribe(
-          (response) => {
-            alert('Xóa dữ liệu thành công!');
-            this.ngOnInit();
-          })
-      }
+  //FILTER
+  filter() {
+    this.customerService.filterCustomer(this.filterForm.systemName, this.filterForm.name, this.filterForm.partner).subscribe((response: any) => {
+      this.customerList = response;
     })
-
   }
-
 }

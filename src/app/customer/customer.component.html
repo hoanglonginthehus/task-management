@@ -12,6 +12,21 @@
                 </button>
             </div>
         </div>
+        <div class="search-bar">
+            <div class="search-box">
+                <div class="search-title">Tên hệ thống</div>
+                <input type="text" class="search-content" [(ngModel)]="filterForm.systemName">
+            </div>
+            <div class="search-box">
+                <div class="search-title">Họ và tên</div>
+                <input type="text" class="search-content" [(ngModel)]="filterForm.name">
+            </div>
+            <div class="search-box grow">
+                <div class="search-title">Thuộc đối tác</div>
+                <input type="text" class="search-content" [(ngModel)]="filterForm.partner">
+            </div>
+            <button (click)="filter()">Search</button>
+        </div>
         <div id="main-content" class="container-fluid">
             <div class="row head row-content">
                 <div class="col-1">STT</div>
@@ -38,16 +53,9 @@
                     </ng-template>
                 </div>
                 <div class="col-1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6 update">
-                                <fa-icon icon=pen-square (click)="openUpdateModal(update, item.id)"></fa-icon>
-                            </div>
-                            <div class="col-6 delete">
-                                <fa-icon icon=trash (click)="openDeleteModal(remove, item.id)"></fa-icon>
-                            </div>
-                        </div>
-                    </div>
+                    <span class="update" (click)="openUpdateModal(update, item.id)">
+                        <img src="../../assets/icon/general/edit.svg" alt="">
+                    </span>
                 </div>
             </div>
         </div>
@@ -225,18 +233,6 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
             <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template #remove let-modal>
-    <div id="modal">
-        <div class="modal-header" style="font-size: 24px;">
-            Xác nhận xóa dữ liệu?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
-            <button type="button" class="btn btn-save" (click)="modal.close('save')">Đồng ý</button>
         </div>
     </div>
 </ng-template>
