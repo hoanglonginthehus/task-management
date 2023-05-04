@@ -14,4 +14,9 @@ export class ProjectService {
   getProjectList(): Observable<any> {
     return this.http.get(this.projectAPI + 'list/')
   }
+
+  filterProject(name: string, code: string, partner: string): Observable<any> {
+    const filterUrl = this.projectAPI + '?' + 'name=' + name + '&' + 'code=' + code + '&' +'partner=' + partner;
+    return this.http.get(filterUrl);
+  }
 }

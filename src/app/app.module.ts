@@ -18,6 +18,9 @@ import { ProjectComponent } from './project/project.component';
 import { ModuleComponent } from './module/module.component';
 import { WorkItemComponent } from './work-item/work-item.component';
 import { WorkPlanComponent } from './work-plan/work-plan.component';
+import { TaskComponent } from './task/task.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { WorkPlanComponent } from './work-plan/work-plan.component';
     ProjectComponent,
     ModuleComponent,
     WorkItemComponent,
-    WorkPlanComponent
+    WorkPlanComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { WorkPlanComponent } from './work-plan/work-plan.component';
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]

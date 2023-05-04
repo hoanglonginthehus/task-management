@@ -44,7 +44,7 @@
                 <div class="col-2">{{item.name}}</div>
                 <div class="col-1">{{item.phoneNo}}</div>
                 <div class="col-1">{{item.department}}</div>
-                <div class="col-2">{{item.role[0].role_name}}</div>
+                <div class="col-2">{{item.role[0].name}}</div>
                 <div class="col-2">
                     <div *ngIf="item.status === 'Active'; then thenBlock else elseBlock"></div>
                     <ng-template #thenBlock>

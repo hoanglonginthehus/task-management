@@ -1,2 +1,50 @@
 <app-nav></app-nav>
-<p>module works!</p>
+<div class="wrapper">
+
+    <div class="main">
+        <h4>Danh sách module</h4>
+        <div>
+            <div class="pull-right">
+                <button>+ Thêm mới</button>
+                <button>
+                    <fa-icon icon=download></fa-icon>
+                    Xuất file
+                </button>
+            </div>
+        </div>
+        <div class="search-bar">
+            <div class="search-box">
+                <div class="search-title">Tên module</div>
+                <input type="text" class="search-content">
+            </div>
+            <div class="search-box">
+                <div class="search-title">Mã module</div>
+                <input type="text" class="search-content">
+            </div>
+            <div class="search-box grow">
+                <div class="search-title">Dự án</div>
+                <input type="text" class="search-content">
+            </div>
+            <button>Search</button>
+        </div>
+        <div id="main-content" class="container-fluid">
+            <div class="row head row-content">
+                <div class="col-1 text-center">STT</div>
+                <div class="col-2">Mã module</div>
+                <div class="col-4">Tên module</div>
+                <div class="col-1">Ngày tạo</div>
+                <div class="col-3">Dự án</div>
+                <div class="col-1 text-center">Người tạo</div>
+            </div>
+            <div *ngFor="let item of moduleList; let idx = index" class="row body row-content">
+                <div class="col-1 text-center">{{idx+1}}</div>
+                <div class="col-2">{{item.code}}</div>
+                <div class="col-4">{{item.name}}</div>
+                <div class="col-1">{{item.dateStart}}</div>
+                <div class="col-3">{{item.project.name}}</div>
+                <div class="col-1 text-center">{{item.emp[0].username}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -15,17 +15,17 @@
         <div class="search-bar">
             <div class="search-box">
                 <div class="search-title">Tên dự án</div>
-                <input type="text" class="search-content">
+                <input type="text" class="search-content" [(ngModel)]="filterForm.name">
             </div>
             <div class="search-box">
                 <div class="search-title">Mã dự án</div>
-                <input type="text" class="search-content">
+                <input type="text" class="search-content" [(ngModel)]="filterForm.code">
             </div>
             <div class="search-box grow">
                 <div class="search-title">Thuộc đối tác</div>
-                <input type="text" class="search-content">
+                <input type="text" class="search-content" [(ngModel)]="filterForm.partner">
             </div>
-            <button>Search</button>
+            <button (click)="filter()">Search</button>
         </div>
         <div id="main-content" class="container-fluid">
             <div class="row head row-content">

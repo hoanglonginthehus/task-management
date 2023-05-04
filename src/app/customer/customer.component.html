@@ -166,11 +166,40 @@
                         </div>
                         <div class="col-6 form-group">
                             <label for="update-gender" class="form-label">Giới tính <span>*</span></label>
-                            <select id="update-gender" class="form-control">
+                            <!-- <select id="update-gender" class="form-control">
                                 <option value="Male" selected>Nam</option>
                                 <option value="Female">Nữ</option>
                                 <option value="Other">Khác</option>
-                            </select>
+                            </select> -->
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" value="Male"
+                                            formControlName="gender">
+                                        <label class="form-check-label" for="status-active">
+                                            Nam
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" value="Female"
+                                            formControlName="gender">
+                                        <label class="form-check-label" for="status-active">
+                                            Nữ
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" value="Other"
+                                            formControlName="gender">
+                                        <label class="form-check-label" for="status-active">
+                                            Khác
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

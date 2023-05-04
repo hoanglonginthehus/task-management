@@ -1,4 +1,7 @@
 <div *ngIf="authService.isLoggedIn$ | async">
     <app-nav></app-nav>
-    <app-sidebar></app-sidebar>
+    <div style="display: flex;">
+        <app-sidebar></app-sidebar>
+        <router-outlet></router-outlet>
+    </div>
 </div>

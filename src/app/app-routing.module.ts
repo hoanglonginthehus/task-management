@@ -9,6 +9,7 @@ import { ProjectComponent } from './project/project.component';
 import { ModuleComponent } from './module/module.component';
 import { WorkItemComponent } from './work-item/work-item.component';
 import { WorkPlanComponent } from './work-plan/work-plan.component';
+import { TaskComponent } from './task/task.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
   },
   {
     path: 'dashboard', component: DashboardComponent,
+    children: [
+      {
+        path: 'task', component: TaskComponent,
+      },
+    ],
     canActivate:[IsAuthenticatedGuard]
   },
   {

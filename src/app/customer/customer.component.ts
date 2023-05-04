@@ -14,6 +14,7 @@ export class CustomerComponent {
 
   customerList: any[] = [];
 
+  //Filter Form
   filterForm = {
     'systemName': "",
     'name': "",
@@ -97,18 +98,20 @@ export class CustomerComponent {
     })
     this.modalService.open(updateModal, { centered: true, size: 'lg' }).result.then((result) => {
       if (result === 'save') {
+        console.log(this.updateForm.value);
         if (!this.updateForm.valid) {
           alert('Dữ liệu không hợp lệ');
           return;
         } else {
           const val = this.updateForm.value;
-          this.customerService.updateCustomer(id, val.name, val.systemName, val.email, val.phoneNo, val.partner, val.gender, val.note, val.status).subscribe(respone => {
-            try {
-              alert('Đã sửa thông tin khách hàng');
-              this.ngOnInit();
-            } catch (error) {
-              console.log(error);
-            }
+          this.customerService.updateCustomer(id, val.name, val.systemName, val.email, val.phoneNo, val.partner, val.gender, val.note, val.status).subscribe(response => {
+            // try {
+
+            // } catch (error) {
+            //   console.log(error);
+            // }
+            alert('Đã sửa thông tin khách hàng');
+            this.ngOnInit();
           })
 
         }

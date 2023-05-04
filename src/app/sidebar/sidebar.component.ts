@@ -16,6 +16,7 @@ export class SidebarComponent {
     {
       name: 'Task',
       icon: '../../assets/icon/task-icon.svg',
+      path: 'task'
     },
     {
       name: 'Calendar',

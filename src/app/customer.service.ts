@@ -25,10 +25,10 @@ export class CustomerService {
 
   updateCustomer(id: number, name: string, systemName: string, email: string, phoneNo: string, partner: string, gender: string, note: string, status: string): Observable<any> {
     const putUrl = this.customerAPI + 'form/' + id;
-    return this.http.put(putUrl, { name, systemName, email, phoneNo, partner, gender, note, status })
+    return this.http.put(putUrl, { name, systemName, email, phoneNo, partner, gender, note, status }, {responseType: 'json'})
   }
 
-  filterCustomer(systemName: string, name: string, partner: string) {
+  filterCustomer(systemName: string, name: string, partner: string): Observable<any> {
     const filterUrl = this.customerAPI + '?' + 'name=' + name + '&' + 'systemName=' + systemName + '&' +'partner=' + partner;
     return this.http.get(filterUrl);
   }
