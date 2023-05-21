@@ -33,6 +33,7 @@ export class LoginComponent {
           this.router.navigate(['dashboard']);
       },
       error => {
+        console.log(error);
         alert('Dang nhap that bai');
       }
     );

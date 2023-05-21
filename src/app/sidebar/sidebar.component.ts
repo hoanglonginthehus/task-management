@@ -10,21 +10,22 @@ export class SidebarComponent {
 
   list = [
     {
-      name: 'Dashboard',
+      name: 'Báo cáo tổng hợp',
       icon: '../../assets/icon/dashboard-icon.svg',
+      path: 'report'
     },
     {
-      name: 'Task',
+      name: 'Quản lí chi tiết công việc',
       icon: '../../assets/icon/task-icon.svg',
       path: 'task'
     },
-    {
-      name: 'Calendar',
-      icon: '../../assets/icon/calendar-icon.svg',
-    },
-    {
-      name: 'Help',
-      icon: '../../assets/icon/help-icon.svg',
-    },
+    // {
+    //   name: 'Lịch',
+    //   icon: '../../assets/icon/calendar-icon.svg',
+    // },
+    // {
+    //   name: 'Hỗ trợ',
+    //   icon: '../../assets/icon/help-icon.svg',
+    // },
   ]
 }

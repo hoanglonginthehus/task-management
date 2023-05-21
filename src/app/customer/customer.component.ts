@@ -61,6 +61,10 @@ export class CustomerComponent {
 
   //ADD MODAL & ADDING CUSTOMERS
   openAddModal(addModal: TemplateRef<any>): void {
+    if ((localStorage.getItem('role')?.includes('Test')) || (localStorage.getItem('role')?.includes('End'))) {
+      alert("Bạn không có quyền truy cập");
+      return;
+    }
     this.modalService.open(addModal, { centered: true, size: 'lg' }).result.then((result) => {
       if (result === 'save') {
         const val = this.addForm.value;
@@ -84,6 +88,10 @@ export class CustomerComponent {
 
   //UPDATING MODAL & UPDATING CUSTOMERS
   openUpdateModal(updateModal: TemplateRef<any>, id: number) {
+    if ((localStorage.getItem('role')?.includes('Test')) || (localStorage.getItem('role')?.includes('End'))) {
+      alert("Bạn không có quyền truy cập");
+      return;
+    }
     this.customerService.getCustomerById(id).subscribe(data => {
       this.updateForm = this.fb.group({
         name: [data.name, Validators.required],
@@ -98,20 +106,19 @@ export class CustomerComponent {
     })
     this.modalService.open(updateModal, { centered: true, size: 'lg' }).result.then((result) => {
       if (result === 'save') {
-        console.log(this.updateForm.value);
         if (!this.updateForm.valid) {
           alert('Dữ liệu không hợp lệ');
           return;
         } else {
           const val = this.updateForm.value;
           this.customerService.updateCustomer(id, val.name, val.systemName, val.email, val.phoneNo, val.partner, val.gender, val.note, val.status).subscribe(response => {
-            // try {
-
-            // } catch (error) {
-            //   console.log(error);
-            // }
-            alert('Đã sửa thông tin khách hàng');
-            this.ngOnInit();
+            try {
+              alert('Đã sửa thông tin khách hàng');
+              this.ngOnInit();
+            } catch (error) {
+              console.log(error);
+            }
+            
           })
 
         }

@@ -21,6 +21,8 @@ import { WorkPlanComponent } from './work-plan/work-plan.component';
 import { TaskComponent } from './task/task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ReportComponent } from './report/report.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ModuleComponent,
     WorkItemComponent,
     WorkPlanComponent,
-    TaskComponent
+    TaskComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    NgChartsModule
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]

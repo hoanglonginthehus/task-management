@@ -5,7 +5,7 @@
         <h4>Danh sách dự án</h4>
         <div>
             <div class="pull-right">
-                <button>+ Thêm mới</button>
+                <button (click)="openAddModal(add)">+ Thêm mới</button>
                 <button>
                     <fa-icon icon=download></fa-icon>
                     Xuất file
@@ -53,9 +53,6 @@
                     </ng-template>
                 </div>
                 <div class="col-1 text-center">
-                    <!-- <span class="update">
-                        <img src="../../assets/icon/general/edit.svg" alt="">
-                    </span> -->
                     {{item.emp.username}}
                 </div>
             </div>
@@ -63,3 +60,88 @@
     </div>
 
 </div>
+
+<ng-template #add let-modal>
+    <div id="modal">
+        <div class="modal-header">
+            <h4 class="modal-title">THÊM MỚI DỰ ÁN</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <form [formGroup]="addForm">
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-code" class="form-label">Mã dự án: <span>*</span></label>
+                            <input type="text" placeholder="Nhập mã dự án" class="form-control" formControlName="code">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-dateStart" class="form-label">Ngày bắt đầu: <span>*</span></label>
+                            <input type="text" placeholder="dd--MM--yyyy" class="form-control" formControlName="dateStart">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-name" class="form-label">Tên dự án: <span>*</span></label>
+                            <input type="text" placeholder="Nhập tên dự án" class="form-control" formControlName="name">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-dateEnd" class="form-label">Ngày kết thúc: <span>*</span></label>
+                            <input type="text" placeholder="dd--MM--yyyy" class="form-control" formControlName="dateEnd">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-customer" class="form-label">Đối tác: <span>*</span></label>
+                            <select formControlName="customer" class="form-control">
+                                <option value="">--Chọn--</option>
+                                <option *ngFor="let customer of customerList" value="{{customer}}">{{customer}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-status" class="form-label">Trạng thái: <span>*</span></label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" id="status-active"
+                                            value="Active" formControlName="status">
+                                        <label class="form-check-label" for="status-active">
+                                            Hoạt động
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status"
+                                            id="status-not-active" checked value="Inactive" formControlName="status">
+                                        <label class="form-check-label" for="status-not-active">
+                                            Không hoạt động
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-emp" class="form-label">Người phụ trách: <span>*</span></label>
+                            <select formControlName="emp" class="form-control">
+                                <option value="">--Chọn--</option>
+                                <option *ngFor="let emp of empList" value="{{emp}}">{{emp}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-note" class="form-label">Ghi chú</label>
+                            <input type="text" placeholder="Nhập ghi chú" class="form-control" formControlName="note">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+            <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+        </div>
+    </div>
+</ng-template>

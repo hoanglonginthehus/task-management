@@ -1,17 +1,295 @@
-<div cdkDropListGroup>
-    <div class="example-container">
-        <h2>To do</h2>
+<div id="task">
 
-        <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    <div class="container-fluid drag-drop-board" cdkDropListGroup>
+        <div class="row">
+            <div class="box-container col-3">
+                <h4 style="color: rgba(80, 48, 229, 1); border-bottom: 3px solid #5030E5;">
+                    Việc cần làm</h4>
+                <div cdkDropList [cdkDropListData]="todo" class="box-list" (cdkDropListDropped)="drop($event)">
+                    <div class="box-item" *ngFor="let item of todo" cdkDrag>
+                        <div class="item-header">
+                            <span>{{item.type}}</span>
+                            <span>{{item.priority}}</span>
+                            <span>{{item.group}}</span>
+                        </div>
+                        <div class="item-name">{{item.name}}</div>
+                        <div class="item-content">{{item.content}}</div>
+                    </div>
+                    <div class="add-item" cdkDrag [cdkDragDisabled]="true" (click)="openAddModal(add)">
+                        <button>
+                            <img src="../../assets/icon/general/add-square.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="box-container col-3">
+                <h4 style="color: rgb(180, 160, 11); border-bottom: 3px solid #FFEA55;">Việc đang thực hiện</h4>
+                <div cdkDropList [cdkDropListData]="doing" class="box-list" (cdkDropListDropped)="drop($event)">
+                    <div class="box-item" *ngFor="let item of doing" cdkDrag>
+                        <div class="item-header">
+                            <span>{{item.type}}</span>
+                            <span>{{item.priority}}</span>
+                            <span>{{item.group}}</span>
+                        </div>
+                        <div class="item-name">{{item.name}}</div>
+                        <div class="item-content">{{item.content}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-container col-3">
+                <h4 style="color: rgba(43, 187, 19, 1); border-bottom: 3px solid #2BBB13;">Việc đã hoàn thành</h4>
+                <div cdkDropList [cdkDropListData]="done" class="box-list" (cdkDropListDropped)="drop($event)">
+                    <div class="box-item" *ngFor="let item of done" cdkDrag>
+                        <div class="item-header">
+                            <span>{{item.type}}</span>
+                            <span>{{item.priority}}</span>
+                            <span>{{item.group}}</span>
+                        </div>
+                        <div class="item-name">{{item.name}}</div>
+                        <div class="item-content">{{item.content}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-container col-3">
+                <h4 style="color: rgba(248, 28, 34, 1); border-bottom: 3px solid #F81C22;">Việc đã hủy</h4>
+                <div cdkDropList [cdkDropListData]="cancel" class="box-list" (cdkDropListDropped)="drop($event)">
+                    <div class="box-item" *ngFor="let item of cancel" cdkDrag>
+                        <div class="item-header">
+                            <span>{{item.type}}</span>
+                            <span>{{item.priority}}</span>
+                            <span>{{item.group}}</span>
+                        </div>
+                        <div class="item-name">{{item.name}}</div>
+                        <div class="item-content">{{item.content}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="example-container">
-        <h2>Done</h2>
-
-        <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-        </div>
-    </div>
 </div>
+
+<ng-template #add let-modal>
+    <div id="modal">
+        <div class="modal-header">
+            <h4 class="modal-title">THÊM MỚI CÔNG VIỆC</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <form [formGroup]="addForm">
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-name" class="form-label">Tên công việc: <span>*</span></label>
+                            <input type="text" placeholder="Nhập tên công việc" class="form-control"
+                                formControlName="name">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-dateStart" class="form-label">Ngày bắt đầu:</label>
+                            <input type="text" placeholder="dd--MM--yyyy" class="form-control"
+                                formControlName="dateStart">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-project" class="form-label">Dự án: <span>*</span></label>
+                            <select (change)="onChangeProject($event)" formControlName="project" class="form-control">
+                                <option *ngFor="let project of projectList" value="{{project}}">{{project}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-dateEnd" class="form-label">Ngày kết thúc:</label>
+                            <input type="text" placeholder="dd--MM--yyyy" class="form-control"
+                                formControlName="dateEnd">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-module" class="form-label">Module: <span>*</span></label>
+                            <select (change)="onChangeModule($event)" formControlName="module" class="form-control">
+                                <option value="">--Chọn--</option>
+                                <option *ngFor="let module of moduleList" value="{{module}}">{{module}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-emp4" class="form-label">Người quản lí: <span>*</span></label>
+                            <!-- <select formControlName="emp4" class="form-control">
+                                <option value="">--Chọn--</option>
+                                <option *ngFor="let emp of empList" value="{{emp}}">{{emp}}</option>
+                            </select> -->
+                            <input type="text" placeholder="" class="form-control" formControlName="emp4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-module" class="form-label">Đầu mục: <span>*</span></label>
+                            <select formControlName="workitem" class="form-control">
+                                <option value="">--Chọn--</option>
+                                <option *ngFor="let item of itemList" value="{{item}}">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-emp3" class="form-label">Người thực hiện: <span>*</span></label>
+                            <select formControlName="emp3" class="form-control">
+                                <option value="" [disabled]="emp3Disable">--Chọn--</option>
+                                <option *ngFor="let emp of empList" value="{{emp}}" [disabled]="emp3Disable">{{emp}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-content" class="form-label">Nội dung: <span>*</span></label>
+                            <input type="text" placeholder="" class="form-control" formControlName="content">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-groupofwork" class="form-label">Nhóm công việc: <span>*</span></label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="groupofwork" value="New"
+                                            formControlName="groupofwork">
+                                        <label class="form-check-label" for="status-active">Làm mới</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="groupofwork" value="Fixed"
+                                            formControlName="groupofwork">
+                                        <label class="form-check-label" for="status-active">Sửa lỗi</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-note" class="form-label">Ghi chú:</label>
+                            <input type="text" placeholder="" class="form-control" formControlName="note">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-typeofwork" class="form-label">Loại công việc: <span>*</span></label>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="typeofwork" value="Complex"
+                                            formControlName="typeofwork">
+                                        <label class="form-check-label" for="status-active">Phức tạp</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="typeofwork" value="Medium"
+                                            formControlName="typeofwork">
+                                        <label class="form-check-label" for="status-active">Trung bình</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="typeofwork" value="Simple"
+                                            formControlName="typeofwork">
+                                        <label class="form-check-label" for="status-active">Đơn giản</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-priority" class="form-label">Mức độ ưu tiên: <span>*</span></label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priority" value="Emergency"
+                                            formControlName="priority">
+                                        <label class="form-check-label" for="status-active">Khẩn cấp</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priority" value="High"
+                                            formControlName="priority">
+                                        <label class="form-check-label" for="status-active">Cao</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priority" value="Medium"
+                                            formControlName="priority">
+                                        <label class="form-check-label" for="status-active">Trung bình</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priority" value="Low"
+                                            formControlName="priority">
+                                        <label class="form-check-label" for="status-active">Thấp</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-status" class="form-label">Trạng thái: <span>*</span></label>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="Finish"
+                                            formControlName="status">
+                                        <label class="form-check-label" for="status-active">Đã hoàn thành</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="Processing"
+                                            formControlName="status">
+                                        <label class="form-check-label" for="status-active">Đang thực hiện</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="Pending"
+                                            formControlName="status">
+                                        <label class="form-check-label" for="status-active">Việc cần làm</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="Pause"
+                                            formControlName="status">
+                                        <label class="form-check-label" for="status-active">Tạm dừng</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="status" value="Cancel"
+                                            formControlName="status">
+                                        <label class="form-check-label" for="status-active">Hủy</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="add-ot" class="form-label">OT (làm việc ngoài giờ)</label>
+                                </div>
+                                <div class="col-6">
+                                    <input class="form-check-input" type="radio" name="ot" value=1 formControlName="ot">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+            <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+        </div>
+    </div>
+</ng-template>

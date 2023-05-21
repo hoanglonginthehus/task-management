@@ -1,0 +1,20 @@
+#report {
+    width: calc(100vw - 194px);
+    padding: 20px;
+
+    .main {
+        padding: 20px;
+
+        .chart-title {
+            padding: 1em 5em;
+            box-sizing: content-box;
+            color: white;
+            display: inline-block;
+        }
+
+        .chart {
+            width: 55%;
+        }
+    }
+
+}

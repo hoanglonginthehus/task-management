@@ -110,3 +110,71 @@
         }
     }
 }
+
+#modal {
+    .modal-header {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 36px;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+    }
+
+    .modal-body {
+        .form-group {
+            padding: 0.75rem;
+
+            label {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 15px;
+                color: #666666;
+
+                span {
+                    color: rgba(237, 28, 36, 1);
+                }
+            }
+
+            input {
+                border-radius: 8px;
+
+                &:focus {
+                    box-shadow: none;
+                    border: 2px solid #7A5CFA;
+                }
+            }
+
+            select:focus {
+                box-shadow: none;
+                border: 2px solid #7A5CFA;
+            }
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: center;
+
+        button {
+            border-radius: 5px;
+            padding: 6px 32px;
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+
+        button.btn-dismiss {
+            background: linear-gradient(360deg, #8B8B8B 0%, #8B8B8B 100%);
+        }
+
+        button.btn-save {
+            background: linear-gradient(360deg, #624DE3 0%, #106DB6 100%);
+        }
+    }
+}

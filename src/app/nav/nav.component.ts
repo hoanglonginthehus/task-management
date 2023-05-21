@@ -12,12 +12,11 @@ export class NavComponent {
   account = localStorage.getItem('username');
 
   constructor(private router: Router, private library: FaIconLibrary) {
-    library.addIconPacks(fas);
+    this.library.addIconPacks(fas);
   }
 
   logOut() {
-    localStorage.removeItem('auth');
-    localStorage.removeItem('name');
+    localStorage.clear();
     this.router.navigate(['login']);
   }
 }

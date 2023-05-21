@@ -10,6 +10,7 @@ import { ModuleComponent } from './module/module.component';
 import { WorkItemComponent } from './work-item/work-item.component';
 import { WorkPlanComponent } from './work-plan/work-plan.component';
 import { TaskComponent } from './task/task.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
     children: [
       {
         path: 'task', component: TaskComponent,
+      },
+      {
+        path: 'report', component: ReportComponent,
       },
     ],
     canActivate:[IsAuthenticatedGuard]

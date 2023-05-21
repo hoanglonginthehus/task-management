@@ -32,4 +32,8 @@ export class CustomerService {
     const filterUrl = this.customerAPI + '?' + 'name=' + name + '&' + 'systemName=' + systemName + '&' +'partner=' + partner;
     return this.http.get(filterUrl);
   }
+
+  getAllNameOfCustomer(): Observable<any> {
+    return this.http.get(this.customerAPI + 'list/name')
+  }
 }

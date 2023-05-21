@@ -5,7 +5,7 @@
         <h4>Danh sách module</h4>
         <div>
             <div class="pull-right">
-                <button>+ Thêm mới</button>
+                <button (click)="openAddModal(add)">+ Thêm mới</button>
                 <button>
                     <fa-icon icon=download></fa-icon>
                     Xuất file
@@ -15,17 +15,17 @@
         <div class="search-bar">
             <div class="search-box">
                 <div class="search-title">Tên module</div>
-                <input type="text" class="search-content">
+                <input type="text" class="search-content" [(ngModel)]="filterForm.name">
             </div>
             <div class="search-box">
                 <div class="search-title">Mã module</div>
-                <input type="text" class="search-content">
+                <input type="text" class="search-content" [(ngModel)]="filterForm.code">
             </div>
             <div class="search-box grow">
                 <div class="search-title">Dự án</div>
-                <input type="text" class="search-content">
+                <input type="text" class="search-content" [(ngModel)]="filterForm.project">
             </div>
-            <button>Search</button>
+            <button (click)="filter()">Search</button>
         </div>
         <div id="main-content" class="container-fluid">
             <div class="row head row-content">
@@ -48,3 +48,46 @@
     </div>
 
 </div>
+
+<ng-template #add let-modal>
+    <div id="modal">
+        <div class="modal-header">
+            <h4 class="modal-title">THÊM MỚI MODULE</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <form [formGroup]="addForm">
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-name" class="form-label">Tên module: <span>*</span></label>
+                            <input type="text" placeholder="Nhập tên module" class="form-control"
+                                formControlName="name">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-dateStart" class="form-label">Ngày tạo: <span>*</span></label>
+                            <input type="text" placeholder="dd--MM--yyyy" class="form-control"
+                                formControlName="dateStart">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="add-project" class="form-label">Dự án: <span>*</span></label>
+                            <select formControlName="project" class="form-control">
+                                <option value="">--Chọn--</option>
+                                <option *ngFor="let project of projectList" value="{{project}}">{{project}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="add-note" class="form-label">Ghi chú</label>
+                            <input type="text" placeholder="" class="form-control" formControlName="note">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dismiss" (click)="modal.close('dismiss')">Huỷ</button>
+            <button type="button" class="btn btn-save" (click)="modal.close('save')">Lưu</button>
+        </div>
+    </div>
+</ng-template>

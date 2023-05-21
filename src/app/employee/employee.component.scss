@@ -9,13 +9,14 @@
         .pull-right {
             text-align: right;
         }
+
         .search-bar {
             padding: 20px 0px;
             display: flex;
             align-items: end;
 
             .search-box {
-                padding: 0px 80px 0px 20px;
+                padding: 0px 20px;
                 border-right: 2px solid #D0D5DD;
 
                 &.grow {
@@ -39,6 +40,20 @@
                     height: 36px;
                     padding: 1em;
                 }
+
+                .dropdown-content {
+                    border: none;
+                    font-family: 'Montserrat', sans-serif;
+                    width: 140px;
+                    height: 36px;
+                    padding: 0.5em;
+                    background: #FFFFFF;
+                    color: #624DE3;
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 20px;
+                }   
             }
         }
 
@@ -66,11 +81,8 @@
                 line-height: 17px;
 
                 .update {
+                    cursor: pointer;
                     color: rgba(98, 77, 227, 1);
-                }
-
-                .delete {
-                    color: rgba(163, 13, 17, 1);
                 }
 
                 .active {
@@ -103,6 +115,69 @@
             padding: 8px 12px;
             background: #624DE3;
             border-radius: 8px
+        }
+    }
+}
+
+#modal {
+    .modal-header {
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 36px;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+    }
+
+    .modal-body {
+        .form-group {
+            padding: 0.75rem;
+
+            label {
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 15px;
+                color: #666666;
+
+                span {
+                    color: rgba(237, 28, 36, 1);
+                }
+            }
+
+            input {
+                border-radius: 8px;
+
+                &:focus {
+                    box-shadow: none;
+                    border: 2px solid #7A5CFA;
+                }
+            }
+        }
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: center;
+
+        button {
+            border-radius: 5px;
+            padding: 6px 32px;
+            font-family: 'Roboto', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+
+        button.btn-dismiss {
+            background: linear-gradient(360deg, #8B8B8B 0%, #8B8B8B 100%);
+        }
+
+        button.btn-save {
+            background: linear-gradient(360deg, #624DE3 0%, #106DB6 100%);
         }
     }
 }

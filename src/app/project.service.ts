@@ -19,4 +19,12 @@ export class ProjectService {
     const filterUrl = this.projectAPI + '?' + 'name=' + name + '&' + 'code=' + code + '&' +'partner=' + partner;
     return this.http.get(filterUrl);
   }
+
+  addProject(code: string, name: string, status: string, dateStart: string, dateEnd: string, emp: string, customer: string, note: string): Observable<any> {
+    return this.http.post(this.projectAPI + 'form', {code, name, status, dateStart, dateEnd, emp, customer, note})
+  }
+
+  getAllNameOfProject(): Observable<any> {
+    return this.http.get(this.projectAPI + 'list/name')
+  }
 }
